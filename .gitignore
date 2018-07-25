@@ -2,3 +2,9 @@
 \.vscode/settings\.json
 
 \.DS_Store
+
+bob/__pycache__/
+
+bob/\.pytest_cache/v/cache/
+
+\.pytest_cache/v/cache/
