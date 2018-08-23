@@ -1,13 +1,13 @@
 ALLERGIES = {
-    1: "eggs",
-    2: "peanuts",
-    4: "shellfish",
-    8: "strawberries",
-    16: "tomatoes",
-    32: "chocolate",
-    64: "pollen",
-    128: "cats"
-    }
+"eggs": 1,
+"peanuts": 2,
+"shellfish": 4,
+"strawberries": 8,
+"tomatoes": 16,
+"chocolate": 32,
+"pollen": 64,
+"cats": 128
+}
 
 class Allergies(object):
     allergy_code = 0
@@ -16,11 +16,9 @@ class Allergies(object):
         self.allergy_code = score
 
     def is_allergic_to(self, item):
-        for key in ALLERGIES:
-            if ALLERGIES[key] == item:
-                if key & self.allergy_code == key:
-                    return True
-                return False
+        if item in ALLERGIES:        
+            if ALLERGIES[item] & self.allergy_code == ALLERGIES[item]:
+                return True
         return False
 
     @property
@@ -28,7 +26,7 @@ class Allergies(object):
         ret = []
 
         for key in ALLERGIES:
-            if  key & self.allergy_code == key:
-                ret.append(ALLERGIES[key])
+            if  ALLERGIES[key] & self.allergy_code == ALLERGIES[key]:
+                ret.append(key)
         
         return ret
